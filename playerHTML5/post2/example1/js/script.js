@@ -1,36 +1,39 @@
 
-$(document).ready(function(){
+$(document).ready(function()
+{
 	audio = document.getElementById('audio');
 	time = document.getElementById('time');
 	
-	$("#play-pause").click(function(){
+	$("#play-pause").click(function()
+	{
 		time.max = audio.duration;
 		timeInterval = setInterval("atualizaTime()", 700);
-		if(audio.paused){
+		if(audio.paused)
+		{
 			audio.play();
-			$("#play-pause").text("pause")
-		} else {
+			$("#play-pause").text("pause");
+		} else 
+		{
 			audio.pause();
-			$("#play-pause").text("play")
+			$("#play-pause").text("play");
 		}
 	});
-	$("#time").change(function(){
+	$("#time").change(function()
+	{
 		audio.currentTime = $("#time").val();
 	});
-	$("#mudo").click(function(){
-		if(audio.muted){
-			audio.muted = false;
-			$("#mudo").removeClass("fa-volume-off").addClass("fa-volume-up");
-			
-		} else {
-			audio.muted = true;
-			$("#mudo").removeClass("fa-volume-up").addClass("fa-volume-off");
-			$("#vol").val(0);
-		}
 
+	
+	$("#mudo").click(function()
+	{
+		if(audio.muted)
+			audio.muted = false;	
+		else 
+			audio.muted = true;
 
 	});
-	$("#vol").change(function(){
+	$("#vol").change(function()
+	{
 		if(audio.muted)
 			muted();
 		
@@ -38,9 +41,17 @@ $(document).ready(function(){
 		
 	});
 	
-	
-atualizaTime = function(){
+atualizaTime = function()
+{
 	$("#time").val(audio.currentTime);
 }
-});
+muted = function()
+{
+	if(audio.muted)
+		audio.muted = false;		
+	else 
+		audio.muted = true;		
+}
 
+
+});
